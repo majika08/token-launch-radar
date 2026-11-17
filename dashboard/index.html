@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Token Launch Radar: pre-token protocols ranked by implied value</title>
+<link rel="stylesheet" href="app.css">
+</head>
+<body>
+<header class="masthead">
+  <div class="masthead-in">
+    <div>
+      <h1>Token Launch Radar</h1>
+      <p class="tagline">Protocols that record no token yet, ranked by what their token could be worth at launch, each with the farm plan that goes with it.</p>
+    </div>
+    <div class="mast-stats" id="mast-stats"></div>
+  </div>
+</header>
+
+<main>
+  <section class="panel" id="detail-panel" hidden>
+    <div id="detail"></div>
+  </section>
+
+  <section class="panel">
+    <div class="controls">
+      <label class="ctl grow">Search
+        <input id="q" type="search" placeholder="name, slug or chain">
+      </label>
+      <label class="ctl">Category
+        <select id="cat"><option value="">All categories</option></select>
+      </label>
+      <label class="ctl">Chain
+        <select id="chain"><option value="">All chains</option></select>
+      </label>
+      <label class="ctl">Sort by
+        <select id="sort">
+          <option value="implied">Implied value</option>
+          <option value="tvl">TVL</option>
+          <option value="growth">7d change</option>
+          <option value="age">Age</option>
+          <option value="name">Name</option>
+        </select>
+      </label>
+      <label class="ctl check"><input id="wl" type="checkbox"> Watchlist only</label>
+      <span class="count" id="count"></span>
+    </div>
+    <div class="table-wrap">
+      <table id="board-table">
+        <thead>
+          <tr>
+            <th class="num">#</th><th>Protocol</th><th>Category</th><th>Chains</th>
+            <th class="num">TVL</th><th class="num">7d</th><th class="num">Age</th><th class="num">Implied value</th>
+          </tr>
+        </thead>
+        <tbody id="rows"></tbody>
+      </table>
+    </div>
+    <p class="hint">Select any row for the model's full breakdown and that protocol's farm plan. Deep links work too: <span class="mono">#row=&lt;slug&gt;</span> opens a protocol, <span class="mono">#cat=&lt;category&gt;</span> filters the board.</p>
+  </section>
+
+  <section class="panel" id="model-panel">
+    <h2>How the values are made <span class="model-tag" id="model-version"></span></h2>
+    <div id="model-body"></div>
+  </section>
+
+  <section class="panel">
+    <h2>Already launched, for reference</h2>
+    <p class="sub">These protocols already trade, so the radar never ranks them. They are the market the model was fitted on, shown with the values the market itself gives them.</p>
+    <div class="table-wrap">
+      <table id="live-table">
+        <thead>
+          <tr><th>Protocol</th><th>Category</th><th>Chains</th><th class="num">TVL</th><th class="num">Market cap</th><th class="num">7d</th></tr>
+        </thead>
+        <tbody id="live-rows"></tbody>
+      </table>
+    </div>
+  </section>
+
+  <footer id="foot"></footer>
+</main>
+
+<script src="../data.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
